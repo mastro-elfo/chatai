@@ -1,0 +1,39 @@
+{
+  "intents": [
+    {
+      "tag": "greetings",
+      "patterns": ["Hi", "Hello", "Good morning", "Good afternoon", "Good evening"],
+      "responses": ["Hi!", "Hello"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "Goodbye"],
+      "responses": ["Bye", "See you", "Goodbye"]
+    },
+    {
+      "tag": "ask name",
+      "patterns": ["What's your name?", "What is your name?"],
+      "responses": ["My name is Francesco", "I'm Francesco, nice to meet you."]
+    },
+    {
+      "tag": "ask age",
+      "patterns": ["What's your age?", "How old are you?"],
+      "responses": ["I'm 35 years old"]
+    },
+    {
+      "tag": "rock",
+      "patterns": ["Rock"],
+      "responses": ["Paper"]
+    },
+    {
+      "tag": "paper",
+      "patterns": ["Paper"],
+      "responses": ["Scissors"]
+    },
+    {
+      "tag": "scissor",
+      "patterns": ["Scissor", "Scissors"],
+      "responses": ["Rock"]
+    }
+  ]
+}
