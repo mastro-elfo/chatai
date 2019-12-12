@@ -1,39 +1,55 @@
 <template>
   <v-container>
-    <v-layout
-      wrap
-    >
-    <v-flex
-        xs12
-        mb-5
-      >
+    <v-layout wrap>
+      <v-flex xs12>
         <v-list v-if="messages.length > 0">
           <v-list-tile
             :key="index"
-            v-for="(message, index) in messages">
-            <v-list-tile-content>
+            v-for="(message, index) in messages"
+            avatar
+            :color="message.type == 'user' ? 'white' : 'default'"
+            :background="message.type == 'user' ? 'purple' : 'white'">
+            <v-list-tile-avatar>
+              <v-icon
+                color="purple">
+                send
+              </v-icon>
+            </v-list-tile-avatar>
+
+            <v-list-tile-content
+              >
+
               <v-list-tile-title
                 v-html="message.text"
-                :class="message.type == 'user' && 'text-xs-right'">
+                :class="message.type"
+
+                >
               </v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list>
 
-        <v-text-field
-          type="text"
-          v-model="message"
-          label="Message"
-          placeholder="Placeholder"
-          autofocus
-          clearable
-          append-outer-icon="send"
-          @click:clear="clearMessage"
-          @click:append-outer="sendMessage"
-          @keydown="onKeydown">
-        </v-text-field>
+
       </v-flex>
     </v-layout>
+
+    <v-footer app
+      fixed
+      :bottom="0">
+      <v-text-field
+        id="input"
+        solo
+        sticky
+        type="text"
+        v-model="message"
+        label="Message"
+        placeholder="Type a message"
+        autofocus
+        :append-icon="message != '' ? 'send' : ''"
+        @click:append="sendMessage"
+        @keydown="onKeydown">
+      </v-text-field>
+    </v-footer>
   </v-container>
 </template>
 
@@ -43,7 +59,7 @@
   export default {
     data: () => ({
       message: '',
-      messages: []
+      messages: [{type: 'user',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'user',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'ai',text: 'lorem ipsum dolor sit'},{type: 'user',text: 'lorem ipsum dolor sit'}]
     }),
     mounted(){
       ai_init();
@@ -78,6 +94,6 @@
   }
 </script>
 
-<style>
+<style lang="sass">
 
 </style>
